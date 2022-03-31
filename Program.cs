@@ -1,35 +1,23 @@
 ﻿using System;
 
-namespace BARSGroupHW1
+namespace ConsoleApp5
 {
     class Program
     {
-
-        class Task
-        {
-            public event EventHandler <char>  OnKeyPressed;
-            public void Run()
-            {
-                var symbol = Console.ReadKey();
-                while (true)
-                {
-                    if (symbol.Key == ConsoleKey.C)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        OnKeyPressed?.Invoke(this, symbol.KeyChar);
-                    }
-                }
-
-            }
-        }
         static void Main(string[] args)
         {
-            Task Subscriber = new Task();
-            EventHandler<char> OnKeyPressed = (sender, symbol) => Console.WriteLine($"веденный символ:", symbol);
-            Subscriber.Run();
+            
+        }
+
+        public interface ILogger 
+        {
+            public string LogInfo (string message);
+            public string LogWarning(string message);
+            public string LogError(string message, Exception ex);
+        }
+        public class LocalFileLogger: ILogger
+        {
+            
 
         }
     }
